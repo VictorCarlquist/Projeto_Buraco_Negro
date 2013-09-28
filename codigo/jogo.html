@@ -19,23 +19,54 @@
 		</style>
 		<script>
 
+			var lookAt=function(origin,point){
+				var coord=[origin[0]-point[0],origin[1]-point[1],origin[2]-point[2]];
+				var zvec=GLGE.toUnitVec3(coord);
+				var xvec=GLGE.toUnitVec3(GLGE.crossVec3([0,1,0],zvec));
+				var yvec=GLGE.toUnitVec3(GLGE.crossVec3(zvec,xvec));		
+				return [xvec[0], yvec[0], zvec[0], 0,
+								xvec[1], yvec[1], zvec[1], 0,
+								xvec[2], yvec[2], zvec[2], 0,
+								0, 0, 0, 1];
+			}
+
+			//#######################################################################
+
 			var canvas = document.getElementById("canvas");
 			var scene;
 			var doc 			= new GLGE.Document();
 			doc.load("scene.xml");
 			var game;
+			var camera;
+
+
 
 			doc.onLoad  		= function(){
 				var renderer	= new GLGE.Renderer(document.getElementById('canvas'));
 				scene			= new GLGE.Scene();
 				scene 			= doc.getElement("mainscene");
+				camera 			= doc.getElement("maincamera");
 				renderer.setScene(scene);
 				game 			= new Game(scene);
 				game.init();
+
+				function positionCamera()
+				{
+					var posC = camera.getPosition();	
+					var posP = game.planets[0].obj.getPosition();
+					camera.setRotMatrix(lookAt([posC.x,posC.y,posC.z],[posP.x,posP.y,posP.z]));
+				}
+				function updateSpaceShips()
+				{
+					game.updateSpaceShips();
+				}
 				var render=function(){
+
+					positionCamera();
 					renderer.render();
 					requestAnimationFrame(render);
 				};
+				setInterval(updateSpaceShips,1);
 				render();
 			}
 
@@ -43,6 +74,6 @@
 
 	</head>
 	<body>
-		<canvas id="canvas" width="500" height="500">	</canvas>
+		<canvas id="canvas" width="900" height="700">	</canvas>
 	</body>
 </html>

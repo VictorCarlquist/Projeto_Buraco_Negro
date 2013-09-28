@@ -23,21 +23,67 @@ Game.prototype.addPlanet = function (obj)
 	this.planets.push(obj);		
 }
 
-var T; //thread
+Game.prototype.updateSpaceShips	= function ()
+{
+	for(var i in this.spaceShips)
+	{
+		this.spaceShips[i].update();
+	}
+}
+
 Game.prototype.init = function()
 {
+	//adiciona planeta
 	var p = new Planet();
-	if(T) clearTimeout(T);
-	T 	=	setTimeout(function(){
-		var obj		= 	new GLGE.Collada;
-		obj.setDocument("model/duck.dae",window.location.href);
-		obj.setScale(0.1);
-
-		p = obj;
-		scene.addCollada(obj);
-	},100);
-
+	var obj		= 	new GLGE.Collada;
+	obj.setDocument("model/duck.dae",window.location.href);
+	obj.setScale(0.05);
+	p.obj = obj;
+	scene.addCollada(p.obj);
 	p.numberOrbits = 4;
 	this.addPlanet(p);
 
+	//adiciona nave
+	var s = new SpaceShip();
+	var obj		= 	new GLGE.Collada;
+	obj.setDocument("model/seymourplane_triangulate.dae",window.location.href);
+	obj.setScale(1);
+	s.obj = obj;
+	scene.addCollada(s.obj);
+	s.planetLink = p;
+	s.setOrbit(4);
+	this.addSpaceShip(s);
+
+	//adiciona nave
+	var s = new SpaceShip();
+	var obj		= 	new GLGE.Collada;
+	obj.setDocument("model/seymourplane_triangulate.dae",window.location.href);
+	obj.setScale(1);
+	s.obj = obj;
+	scene.addCollada(s.obj);
+	s.planetLink = p;
+	s.setOrbit(3);
+	this.addSpaceShip(s);
+
+	//adiciona nave
+	var s = new SpaceShip();
+	var obj		= 	new GLGE.Collada;
+	obj.setDocument("model/seymourplane_triangulate.dae",window.location.href);
+	obj.setScale(1);
+	s.obj = obj;
+	scene.addCollada(s.obj);
+	s.planetLink = p;
+	s.setOrbit(2);
+	this.addSpaceShip(s);
+
+	//adiciona nave
+	var s = new SpaceShip();
+	var obj		= 	new GLGE.Collada;
+	obj.setDocument("model/seymourplane_triangulate.dae",window.location.href);
+	obj.setScale(1);
+	s.obj = obj;
+	scene.addCollada(s.obj);
+	s.planetLink = p;
+	s.setOrbit(1);
+	this.addSpaceShip(s);
 }
