@@ -2,7 +2,12 @@
 <html>
 	<head>
 		<title>SALA3</title>
-		<script type="text/javascript" src="../GLGE/glge-compiled-min.js"></script>
+		<script type="text/javascript" src="GLGE/glge-compiled-min.js">	</script>
+		<script type="text/javascript" src="code/Game.js">				</script>
+		<script type="text/javascript" src="code/FuelItem.js">			</script>
+		<script type="text/javascript" src="code/SpaceShip.js">			</script>
+		<script type="text/javascript" src="code/Planet.js">			</script>
+		<script type="text/javascript" src="code/Trap.js">				</script>
 		<style>
 		body{
 			background-color: #555;
@@ -26,7 +31,7 @@
 				scene 			= doc.getElement("mainscene");
 				renderer.setScene(scene);
 				game 			= new Game(scene);
-
+				game.init();
 				var render=function(){
 					renderer.render();
 					requestAnimationFrame(render);

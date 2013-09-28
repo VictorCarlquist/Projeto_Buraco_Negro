@@ -3,7 +3,7 @@ var Game = function(scene){
 	this.fuelItems 		= []; // vector<FuelItem>
 	this.traps			= []; // vector<Trap>
 	this.planets		= []; // vector<Planet>
-	this.scene			= sene;
+	this.scene			= scene;
 };
 
 Game.prototype.addSpaceShip = function (obj) 
@@ -23,7 +23,21 @@ Game.prototype.addPlanet = function (obj)
 	this.planets.push(obj);		
 }
 
+var T; //thread
 Game.prototype.init = function()
 {
+	var p = new Planet();
+	if(T) clearTimeout(T);
+	T 	=	setTimeout(function(){
+		var obj		= 	new GLGE.Collada;
+		obj.setDocument("model/duck.dae",window.location.href);
+		obj.setScale(0.1);
+
+		p = obj;
+		scene.addCollada(obj);
+	},100);
+
+	p.numberOrbits = 4;
+	this.addPlanet(p);
 
 }
