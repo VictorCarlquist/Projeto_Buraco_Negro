@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<title>SALA3</title>
+		<script type="text/javascript" src="../GLGE/glge-compiled-min.js"></script>
+		<style>
+		body{
+			background-color: #555;
+			font-size: 12px;
+			font-family: arial;
+			overflow:hidden;
+			margin:0;
+		}
+		</style>
+		<script>
+
+			var canvas = document.getElementById("canvas");
+			var scene;
+			var doc 			= new GLGE.Document();
+			doc.load("scene.xml");
+			var game;
+
+			doc.onLoad  		= function(){
+				var renderer	= new GLGE.Renderer(document.getElementById('canvas'));
+				scene			= new GLGE.Scene();
+				scene 			= doc.getElement("mainscene");
+				renderer.setScene(scene);
+				game 			= new Game(scene);
+
+				var render=function(){
+					renderer.render();
+					requestAnimationFrame(render);
+				};
+				render();
+			}
+
+		</script>
+
+	</head>
+	<body>
+		<canvas id="canvas" width="500" height="500">	</canvas>
+	</body>
+</html>
