@@ -25,7 +25,7 @@ Orb.prototype.update = function()
 	this.obj.setLocX((Math.cos(this.theta))*Math.pow(5,this.orbit/2)*6+this.planetLink.obj.getLocX());
 	this.obj.setLocZ((Math.sin(this.theta))*Math.pow(5,this.orbit/2)*6+this.planetLink.obj.getLocZ());
 
-	this.theta += 1/this.orbit/100;
+	this.theta += 1/this.orbit*0.05;
 	this.obj.setRotY(-this.theta);
 	if(this.theta > Math.PI*2)
 		this.theta = 0;
