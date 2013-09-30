@@ -30,62 +30,41 @@ Game.prototype.updateSpaceShips	= function ()
 		this.spaceShips[i].update();
 	}
 }
+Game.prototype.createPlanet	= function(path, scale, numberOrbits)
+{
+	var p = new Planet();
+	var obj		= 	new GLGE.Collada;
+	obj.setDocument(path,window.location.href);
+	obj.setScale(scale);
+	p.obj = obj;
+	scene.addCollada(p.obj);
+	p.numberOrbits = numberOrbits;
+	return p;
+}
+Game.prototype.createSpaceShip 	= function (path, scale, planetLink , orbit)
+{
+	var s = new SpaceShip();
+	var obj		= 	new GLGE.Collada;
+	obj.setDocument(path,window.location.href);
+	obj.setScale(scale);
+	s.obj = obj;
+	scene.addCollada(s.obj);
+	s.planetLink = planetLink;
+	s.setOrbit(orbit);
+
+	return s;
+}
 
 Game.prototype.init = function()
 {
-	//adiciona planeta
-	var p = new Planet();
-	var obj		= 	new GLGE.Collada;
-	obj.setDocument("model/duck.dae",window.location.href);
-	obj.setScale(0.05);
-	p.obj = obj;
-	scene.addCollada(p.obj);
-	p.numberOrbits = 4;
+	
+	var p =	this.createPlanet("model/duck.dae",0.09,4);
 	this.addPlanet(p);
-
-	//adiciona nave
-	var s = new SpaceShip();
-	var obj		= 	new GLGE.Collada;
-	obj.setDocument("model/seymourplane_triangulate.dae",window.location.href);
-	obj.setScale(1);
-	s.obj = obj;
-	scene.addCollada(s.obj);
-	s.planetLink = p;
-	s.setOrbit(4);
-	this.addSpaceShip(s);
-	//adiciona nave
-	var s = new SpaceShip();
-	var obj		= 	new GLGE.Collada;
-	obj.setDocument("model/seymourplane_triangulate.dae",window.location.href);
-	obj.setScale(1);
-	s.obj = obj;
-	scene.addCollada(s.obj);
-	s.planetLink = p;
-	s.setOrbit(3);
-	this.addSpaceShip(s);
-
-	//adiciona nave
-	var s = new SpaceShip();
-	var obj		= 	new GLGE.Collada;
-	obj.setDocument("model/seymourplane_triangulate.dae",window.location.href);
-	obj.setScale(1);
-	s.obj = obj;
-	scene.addCollada(s.obj);
-	s.planetLink = p;
-	s.setOrbit(2);
-	this.addSpaceShip(s);
-
-	//adiciona nave
-	var s = new SpaceShip();
-	var obj		= 	new GLGE.Collada;
-	obj.setDocument("model/seymourplane_triangulate.dae",window.location.href);
-	obj.setScale(1);
-	s.obj = obj;
-	scene.addCollada(s.obj);
-	s.planetLink = p;
-	s.setOrbit(1);
-	this.addSpaceShip(s);
-
+	
+	this.addSpaceShip(this.createSpaceShip("model/seymourplane_triangulate.dae",1,p,4));
+	this.addSpaceShip(this.createSpaceShip("model/seymourplane_triangulate.dae",1,p,3));
+	this.addSpaceShip(this.createSpaceShip("model/seymourplane_triangulate.dae",1,p,2));
+	this.addSpaceShip(this.createSpaceShip("model/seymourplane_triangulate.dae",1,p,1));
 	
 }
 Game.prototype.checkKeyBoard = function(keys)
