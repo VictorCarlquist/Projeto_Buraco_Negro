@@ -53,7 +53,6 @@ Game.prototype.init = function()
 	s.planetLink = p;
 	s.setOrbit(4);
 	this.addSpaceShip(s);
-
 	//adiciona nave
 	var s = new SpaceShip();
 	var obj		= 	new GLGE.Collada;
@@ -86,4 +85,16 @@ Game.prototype.init = function()
 	s.planetLink = p;
 	s.setOrbit(1);
 	this.addSpaceShip(s);
+
+	
+}
+Game.prototype.checkKeyBoard = function(keys)
+{
+	if(keys.isKeyPressed(GLGE.KI_W))
+	{
+		if(game.spaceShips[3].getOrbit() < 4)
+			game.spaceShips[3].orbitChange(game.spaceShips[3].getOrbit()+1);
+		else
+			game.spaceShips[3].orbitChange(1);
+	}
 }

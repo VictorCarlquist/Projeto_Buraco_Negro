@@ -2,7 +2,11 @@ var Orb = function()
 {
 	this.obj 		= 0;
 	this.planetLink = 0;
-	this.orbit		= 0;
+	this.theta		= 0.0;
+
+	var	orbit		= 0;
+	var thread		= 0;
+	this.orbitChanging	= 0; // 0 = false, 1= true , 2 = done
 };
 Orb.prototype.setOrbit = function (u)
 {
@@ -18,10 +22,45 @@ Orb.prototype.getOrbit = function()
 }
 Orb.prototype.update = function()
 {
-	this.obj.setLocX((Math.cos(this.teta))*Math.pow(5,this.orbit/2)*6+this.planetLink.obj.getLocX());
-	this.obj.setLocZ((Math.sin(this.teta))*Math.pow(5,this.orbit/2)*6+this.planetLink.obj.getLocZ());
+	this.obj.setLocX((Math.cos(this.theta))*Math.pow(5,this.orbit/2)*6+this.planetLink.obj.getLocX());
+	this.obj.setLocZ((Math.sin(this.theta))*Math.pow(5,this.orbit/2)*6+this.planetLink.obj.getLocZ());
 
-	this.teta += 1/this.orbit/100;
-	if(this.teta > Math.PI*2)
-		this.teta = 0;
+	this.theta += 1/this.orbit/100;
+	this.obj.setRotY(-this.theta);
+	if(this.theta > Math.PI*2)
+		this.theta = 0;
+	if(this.orbitChanging == 2)
+	{
+		clearInterval(this.thread);
+		this.orbitChanging = 0;
+	}
+}
+Orb.prototype.orbitChange = function (u)
+{
+	if(this.orbit != u && u <= this.planetLink.numberOrbits && this.orbitChanging == 0)
+		if(this.orbit > u)
+		{
+			var a = this;
+			this.orbitChanging = 1;
+			this.thread = setInterval(function() {
+				if(a.orbit > u)
+					a.orbit-=0.01;
+				else{
+					a.orbit = u; // garante que a variavel orbit tera um valor inteiro
+					a.orbitChanging = 2;
+				}
+			},10)
+		}else if(this.orbit < u)
+		{
+			var a = this;
+			this.orbitChanging = 1;
+			this.thread = setInterval(function() {
+				if(a.orbit <= u)
+					a.orbit+=0.01;
+				else{
+					a.orbit = u; // garante que a variavel orbit tera um valor inteiro
+					a.orbitChanging = 2;
+				}
+			},10)
+		}
 }

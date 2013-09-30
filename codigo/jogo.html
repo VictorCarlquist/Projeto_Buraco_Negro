@@ -49,6 +49,7 @@
 				scene 			= doc.getElement("mainscene");
 				camera 			= doc.getElement("maincamera");
 				renderer.setScene(scene);
+				var keys		= new GLGE.KeyInput();
 				game 			= new Game(scene);
 				game.init();
 
@@ -62,13 +63,18 @@
 				{
 					game.updateSpaceShips();
 				}
+				function keyboard()
+				{
+					game.checkKeyBoard(keys);
+				}
 				var render=function(){
-
+					game.checkKeyBoard(keys);
 					positionCamera();
 					renderer.render();
 					requestAnimationFrame(render);
 				};
 				setInterval(updateSpaceShips,1);
+				setInterval(keyboard,1000);
 				render();
 			}
 
