@@ -9,7 +9,15 @@
 		<script type="text/javascript" src="code/SpaceShip.js">			</script>
 		<script type="text/javascript" src="code/Planet.js">			</script>
 		<script type="text/javascript" src="code/Trap.js">				</script>
+		<script type="text/javascript" src="code/WormHole.js">			</script>
+		<script type="text/javascript" src="code/Asteroid.js">			</script>
+		<script type="text/javascript" src="code/Human.js">				</script>
+		<script type="text/javascript" src="code/Computer.js">			</script>
+		<script type="text/javascript" src="code/Player.js">			</script>
+		<script type="text/javascript" src="code/Flag.js">				</script>
+		<script type="text/javascript" src="code/Star.js">				</script>
 
+		<script type="text/javascript" src="code/Stats.js"></script>
 		<style>
 		body{
 			background-color: #555;
@@ -19,7 +27,11 @@
 			margin:0;
 		}
 		</style>
+
+
 		<script>
+
+			
 
 			var lookAt=function(origin,point){
 				var coord=[origin[0]-point[0],origin[1]-point[1],origin[2]-point[2]];
@@ -68,12 +80,14 @@
 					game.checkKeyBoard(keys);
 				}
 				var render=function(){
+					stats.begin();
 					game.checkKeyBoard(keys);
 					positionCamera();
 					renderer.render();
 					requestAnimationFrame(render);
+					stats.end();
 				};
-				setInterval(updateSpaceShips,1);
+				setInterval(updateSpaceShips,10);
 				setInterval(keyboard,1000);
 				render();
 			}
@@ -83,5 +97,12 @@
 	</head>
 	<body>
 		<canvas id="canvas" width="900" height="700">	</canvas>
+
+		<script>var stats = new Stats();
+			stats.domElement.style.position = 'absolute';
+			stats.domElement.style.left = '0px';
+			stats.domElement.style.top = '0px';
+
+			document.body.appendChild( stats.domElement );</script>
 	</body>
 </html>

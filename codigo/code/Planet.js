@@ -1,5 +1,6 @@
 var Planet = function()
 {
-	this.obj 			= 0;
-	this.numberOrbits 	= 0;
-}
+	Orb.call(this);
+};
+
+GLGE.augment(Orb,Planet);

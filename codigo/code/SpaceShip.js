@@ -1,7 +1,5 @@
 var SpaceShip = function()
 {
-	this.fuel 		= 0.0;
-	Orb.call(this);
+	this.Fuel 		= 0.0;
+	this.Obj		= 0; // engine model
 };
-
-GLGE.augment(Orb,SpaceShip);
