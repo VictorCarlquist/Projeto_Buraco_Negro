@@ -11,6 +11,10 @@ Star.prototype.addOrb = function (obj)
 {
 	this.Orbs.push(obj);		
 }
+Star.prototype.addPlayer = function (obj) 
+{
+	this.Players.push(obj);		
+}
 
 Star.prototype.updateOrbs	= function ()
 {
@@ -19,7 +23,7 @@ Star.prototype.updateOrbs	= function ()
 		this.Orbs[i].update();
 	}
 }
-Star.prototype.updatePlayers= function(path, scale, numberOrbits)
+Star.prototype.updatePlayers= function()
 {
 	for(var i in this.Players)
 	{
@@ -27,21 +31,3 @@ Star.prototype.updatePlayers= function(path, scale, numberOrbits)
 	}
 }
 
-Star.prototype.init()
-{
-	
-}
-
-/*Star.prototype.createSpaceShip 	= function (path, scale, planetLink , orbit)
-{
-	var s = new SpaceShip();
-	var obj		= 	new GLGE.Collada;
-	obj.setDocument(path,window.location.href);
-	obj.setScale(scale);
-	s.obj = obj;
-	scene.addCollada(s.obj);
-	s.planetLink = planetLink;
-	s.setOrbit(orbit);
-
-	return s;
-}*/

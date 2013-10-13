@@ -3,17 +3,17 @@
 	<head>
 		<title>SALA3</title>
 		<script type="text/javascript" src="GLGE/glge-compiled-min.js">	</script>
+		<script type="text/javascript" src="code/Utils.js">			</script>
+		<script type="text/javascript" src="code/Player.js">			</script>
 		<script type="text/javascript" src="code/Orb.js">				</script>
 		<script type="text/javascript" src="code/Game.js">				</script>
 		<script type="text/javascript" src="code/FuelItem.js">			</script>
 		<script type="text/javascript" src="code/SpaceShip.js">			</script>
 		<script type="text/javascript" src="code/Planet.js">			</script>
-		<script type="text/javascript" src="code/Trap.js">				</script>
 		<script type="text/javascript" src="code/WormHole.js">			</script>
 		<script type="text/javascript" src="code/Asteroid.js">			</script>
 		<script type="text/javascript" src="code/Human.js">				</script>
 		<script type="text/javascript" src="code/Computer.js">			</script>
-		<script type="text/javascript" src="code/Player.js">			</script>
 		<script type="text/javascript" src="code/Flag.js">				</script>
 		<script type="text/javascript" src="code/Star.js">				</script>
 
@@ -68,12 +68,13 @@
 				function positionCamera()
 				{
 					var posC = camera.getPosition();	
-					var posP = game.planets[0].obj.getPosition();
+					var posP = game.Stars[0].Obj.getPosition();
 					camera.setRotMatrix(lookAt([posC.x,posC.y,posC.z],[posP.x,posP.y,posP.z]));
+					return;
 				}
 				function updateSpaceShips()
 				{
-					game.updateSpaceShips();
+					game.update();
 				}
 				function keyboard()
 				{
@@ -96,6 +97,7 @@
 
 	</head>
 	<body>
+		<div id="debug"></div>
 		<canvas id="canvas" width="900" height="700">	</canvas>
 
 		<script>var stats = new Stats();
@@ -103,6 +105,7 @@
 			stats.domElement.style.left = '0px';
 			stats.domElement.style.top = '0px';
 
-			document.body.appendChild( stats.domElement );</script>
+			//document.body.appendChild( stats.domElement );</script>
+
 	</body>
 </html>
