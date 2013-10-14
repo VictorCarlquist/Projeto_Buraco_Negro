@@ -18,6 +18,7 @@ Player.prototype.update = function()
 		{
 			clearInterval(this.thread);
 			this.OrbitChanging = 0;
+			muda = !muda;
 		}
 	}
 
@@ -61,7 +62,7 @@ Player.prototype.orbChange = function (orb)
 				{
 					a.OrbitChanging = 2; // flag para deletar esta thread
 				}else{
-					radiusSpaceShip+= v;
+						radiusSpaceShip+= v;
 					a.setRadius(radiusSpaceShip,-angle,oldOrbPos);						
 				}
 			},10);

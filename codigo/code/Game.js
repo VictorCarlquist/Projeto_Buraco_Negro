@@ -20,6 +20,7 @@ var Game = function(scene){
 };
 
 
+var muda = true;
 Game.prototype.init = function()
 {	
 	var star = this.createObject(O_STAR);
@@ -63,7 +64,10 @@ Game.prototype.checkKeyBoard = function(keys)
 	{
 		for(var i in this.Stars)
 		{
-			this.Stars[i].Players[0].orbChange(this.Stars[i].Orbs[0]);
+			if(muda)
+				this.Stars[i].Players[0].orbChange(this.Stars[i].Orbs[0]);
+			else
+				this.Stars[i].Players[0].orbChange(this.Stars[i].Orbs[1]);
 			
 		}
 	}
