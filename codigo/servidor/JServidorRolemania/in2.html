@@ -1,0 +1,217 @@
+	ge language="java" contentType="text/html; charset=ISO-8859-1"
+
+	pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>WebSocket</title>
+
+<style>
+
+#containerStatus{
+
+	background-color:#3CF;
+
+	font-family: "Courier New", Courier, monospace;
+
+	border: solid #006;
+
+}
+
+
+
+#containerForm{
+
+	font-family: "Courier New", Courier, monospace;
+
+}
+
+
+
+.status{
+
+	background-color:#039;
+
+	color:#FFF;
+
+}
+
+
+
+</style>
+
+<script type="text/javascript">
+
+	var socket;
+
+	//Conecta ao Socket
+
+	function connect() {
+
+		if (!"WebSocket" in window) {
+
+			$("status").innerHTML = "WebSocket ne suportado pelo seu Browser!";
+
+		} else {
+
+			try {
+
+				socket = new WebSocket("ws://"+$("host").value+":"+$("port").value);
+
+				socket.onopen = function() {
+
+					//Conectou, escreve a mensagem Conectou na DIV de id status.
+
+					$("status").innerHTML = "Conectado";
+
+					$("host").disabled = true;
+
+					$("port").disabled = true;
+
+					$("message").focus();
+
+				}
+
+
+
+				socket.onmessage = function(msg) {
+
+					//Recebeu a mensagem
+
+					var message = msg.data;
+
+					if(message != ""){
+
+						var split = message.split(";");
+
+						if("OK"  == split[0]){
+
+							$("receivedMesages").innerHTML = split[1];		
+
+						}
+
+					}
+
+				}
+
+
+
+				socket.onclose = function(){  
+
+					//Fechou a conex„o
+
+				   $("status").innerHTML = "Desconectado";
+
+			    }     
+
+
+
+			} catch (exception) {
+
+				$("status").style. backgroundColor = "#F00";
+
+				$("status").innerHTML = exception.message;
+
+			}
+
+		}
+
+	}
+
+	//FunÁ„o utilizada para recuperar elementos pelo seu id
+
+	function $(element){
+
+	   return document.getElementById(element);
+
+	}
+
+
+
+	//Disconecta
+
+	function disconnect() {
+
+		socket.close();
+
+		$("host").disabled = false;
+
+		$("port").disabled = false;
+
+	}
+
+
+
+	//Envia mensagem
+
+	function sendMessage(message) {
+
+		socket.send($("message").value);
+
+		$("message").value = "";
+
+		$("message").focus();
+
+	}
+
+</script>
+
+</head>
+
+<body onload="$('host').focus()">
+
+<div id="containerStatus">
+
+	<b>Status</b>
+
+	<div id="status" class="status">Desconectado</div>
+
+		<b>⁄ltima mensagem recebida pelo Servidor em:</b><br>
+
+		<div id="receivedMesages" class="status">Nenhuma mensagem recebida.</div>
+
+		</div>
+
+    </div>
+
+</div>
+
+<div id="containerForm">
+
+	<div><b>Servidor:</b><br>
+
+		<label for="hostServidor"></label> <input type="text" id="host" value="127.0.0.1"> <br>
+
+        <div>
+
+		<b>Porta:</b><br>
+
+		<input type="text" id="port" value="8000"> <br>
+
+		<input type="button" value=">>Conectar" onclick="javascript:connect()" />
+
+		<input type="button" value=">>Desconectar" onClick="javascript:disconnect()" />
+
+        </div>
+
+		<div><b>Mensagem:</b><br>
+
+			<textarea name="message" cols="25" rows="10" id="message"></textarea> <br>
+
+			<input type="button" value=">>Enviar" onClick="javascript:sendMessage()" />
+
+		</div>
+
+	</div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!--Autor:Victor Carlquist--
+  --Data: 11/02/2012-->
+<html>
+	<head>
+		<title>WebSocket - CHAT</title>
+		<script>
+		socket = new WebSocket('ws://localhost:8003');
+		socket.onopen = function()	 										// Est� fun��o ser� chamada quando o socket abrir a conex�o com o servidor
+		{
+			document.getElementById("Estado").innerHTML = "Conectado";		//Muda o texto que est� dentro da div Estado
+		}
+		socket.onerror = function(e) 										// Est� fun��o ser� chamada quando o socket tiver algum erro de conex�o
+		{
+			document.getElementById("Estado").innerHTML = "Erro:" + e.data;	//Muda o texto que est� dentro da div Estado
+		}
+		socket.onclose = function() 										// Est� fun��o ser� chamada quando o socket for fechado (pode ser por algum erro na conex�o)
+		{
+			document.getElementById("Estado").innerHTML = "Desconectado";	//Muda o texto que est� dentro da div Estado
+		}
+		socket.onmessage = function(e)										//Est� fun��o ser� chamada quando o servidor enviar alguma informa��o este browser. 
+		{	//Recebe Menssagem do servidor
+			//
+			var dado = e.data.substr(0);//(1); //Tira a letra 'C' do inicio da string
+			document.getElementById("chat").innerHTML += "Amigo: "+ dado + "\n";
+		}
+			
+		function envia()														//Est� fun��o ser� chamada o usu�rio apertar o enter no input para envia a msg.
+		{
+			var texto = document.getElementById("msg").value; 				//pega o texto digitado pelo usu�rio
+			document.getElementById("msg").innerHTML = "";
+			socket.send(texto);//Envia o dado para o servidor, a letra 'C' significa que ser� uma conversa, o servidor usar� essa letra para verificar se o dado est� corrompido!!
+			document.getElementById("chat").innerHTML += "Voc�:  "+texto + "\n";
+		}
+		</script>
+	</head>
+	<body>
+		
+		<textarea id="chat" cols="40" rows="10">
+			"Chat"
+		</textarea>
+		<br />
+		<input type="text" id="msg" onchange="envia();" size="50"/>
+		<div id="Estado"></div>
+	</body>
+<html><html><body></body></html>

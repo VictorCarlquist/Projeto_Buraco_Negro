@@ -1,0 +1,47 @@
+# Blender MTL File: 'nave_02.blend'
+# Material Count: 4
+newmtl Material
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.189669 0.181656 0.640000
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+
+newmtl Material_textura_da_nave_02.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.189669 0.181656 0.640000
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textura_da_nave_02.png
+
+
+newmtl corpo_textura_da_nave_02.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.719282 0.719282 0.719282
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textura_da_nave_02.png
+map_Bump textura_da_nave_02.png
+
+
+newmtl vidro_textura_da_nave_02.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.702454 0.702454 0.702454
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textura_da_nave_02.png
+map_Bump textura_da_nave_02.png
+
+

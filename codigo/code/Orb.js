@@ -6,8 +6,7 @@ var Orb = function()
 
 	this.Orbit		= 0;
 
-	this.PlayerLink	= 0;
-	this.Orbits = {1:30,2:80,3:120};
+	this.Orbits = {1:30,2:80,3:120,4:170,5:220};
 };
 
 Orb.prototype.setOrbit = function (u)
@@ -25,7 +24,7 @@ Orb.prototype.getOrbit = function()
 }
 Orb.prototype.getVelocity = function()
 {
-	return 1/this.Orbit*0.019;
+	return 1/this.Orbit*0.01;
 }
 Orb.prototype.getLocCircle	=	function(theta,radius,type)
 {

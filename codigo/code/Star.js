@@ -7,6 +7,7 @@ Star = function ()
 	this.Obj 			= 0; //engine model
 	this.NumberOrbits 	= 0;
 }
+GLGE.augment(Orb,Star);
 Star.prototype.addOrb = function (obj) 
 {
 	this.Orbs.push(obj);		
@@ -23,11 +24,16 @@ Star.prototype.updateOrbs	= function ()
 		this.Orbs[i].update();
 	}
 }
-Star.prototype.updatePlayers= function()
+Star.prototype.updatePlayers= function(game)
 {
 	for(var i in this.Players)
 	{
-		this.Players[i].update();
+		if(this.Players[i].Type == "Human")
+			this.Players[i].update();
+		else{ // Computer
+			this.Players[i].think(game);
+			this.Players[i].update();
+		}
 	}
 }
 

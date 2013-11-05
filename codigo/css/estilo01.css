@@ -1,0 +1,358 @@
+#estado
+{
+   width: 100px;
+   height: 100px;
+   float: right;
+   bottom: +50px;
+}
+#estado table{
+	width: 50px;
+	height: 30px;
+	color: red;
+}
+
+body{
+  background: url(../fundo_rolimania1.jpg)  no-repeat 0px 0px;
+  /*background-color: #AAFFAA;
+  background: -webkit-gradient(linear, left top, left bottom, from(#aaf), to(#fff)) repeat-X;
+  */
+  background-size:100% 140%;
+  overflow:hidden;
+	
+}
+/* div principal */
+#principal{
+  width:800px;
+  height:400px;
+  background-color:#F0FFF0;
+  margin:auto;
+  margin-top:10%;
+  border: 1px solid black;
+  padding: 3px;
+  box-shadow:20px 20px 25px green;
+  -webkit-perspective: 500px;
+  -moz-perspective: 500px;
+  font:bold 15px Tahoma, Geneva, sans-serif;
+  background-color:rgba(0,0,0,0.2);
+
+}
+
+#principal a{
+  text-decoration: none;
+  color: green;
+}
+/* div principal */
+
+#PaginaGaragem
+{
+  width:900px;
+  height:500px;
+  background-color:#F0FFF0;
+  margin:auto;
+  margin-top:10%;
+  border: 1px solid black;
+  padding: 3px;
+  box-shadow:20px 20px 25px green;
+  -webkit-perspective: 500px;
+  -moz-perspective: 500px;
+  font:bold 15px Tahoma, Geneva, sans-serif;
+
+}
+
+
+
+/* efeitos do botao do menu principal */
+.link_dir{
+  margin:auto;
+  margin-top:10%;
+  width:200px;
+  background-color:#98FB98;
+  padding:10px;
+  text-align:center;
+
+  -webkit-transform: rotateY(-60deg);
+  -webkit-transform-style: preserve-3d;
+
+  -moz-transform: rotateY(-60deg);
+  -moz-transform-style: preserve-3d;
+
+  border-radius:50px;
+
+  -moz-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+}
+
+
+.link_esq{
+  display: block;
+  margin:auto;
+  margin-top:10%;
+  width:200px;
+  background-color:#98FB98;
+  padding:10px;
+  text-align:center;
+
+  -webkit-transform: rotateY(60deg);
+  -webkit-transform-style: preserve-3d;
+
+  -moz-transform: rotateY(60deg);
+  -moz-transform-style: preserve-3d;
+
+  border-radius:50px;
+
+  -moz-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+}
+
+.link_esq:hover{
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  width:300px;
+  font-size:140%;
+  background-color:#00BFFF;
+}
+.link_dir:hover{
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  width:300px;
+  font-size:140%;
+  background-color:#00BFFF;
+}
+/* efeitos do botao do menu principal */
+table.table1{
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.4em;
+  font-style: normal;
+  width: 200px;
+  height: 100px;
+  float: right;
+  margin: 20px;
+}
+/* propiedades da div da pagina de menu */
+#Pagina2 input{
+
+  height: 30px;
+  color:#fff;
+  width: 180px;
+  text-shadow:1px 1px 1px #568F23;
+  border:1px solid #93CE37;
+  border-bottom:3px solid #9ED929;
+  background-color:#9DD929;
+  background:-webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.02, rgb(123,192,67)),
+    color-stop(0.51, rgb(139,198,66)),
+    color-stop(0.87, rgb(158,217,41))
+    );
+  background: -moz-linear-gradient(
+    center bottom,
+    rgb(123,192,67) 2%,
+    rgb(139,198,66) 51%,
+    rgb(158,217,41) 87%
+    );
+  -webkit-border-top-left-radius:5px;
+  -webkit-border-top-right-radius:5px;
+  -moz-border-radius:5px 5px 5px 5px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  margin: 10px;
+}
+
+#Pagina2 input:hover{
+  -webkit-box-shadow: inset 0 1px 10px 1px white;
+  color: white;
+}
+
+#Pagina2 input:active{
+  background-color: red;
+  color: white;
+}
+/* propiedades da div da pagina de menu */
+
+/* estilo da tabela da pagina de menu de salas */
+.table1
+{
+}
+
+.table1 thead th{
+  padding:15px;
+  color:#fff;
+  text-shadow:1px 1px 1px #568F23;
+  border:1px solid #93CE37;
+  border-bottom:3px solid #9ED929;
+  background-color:#9DD929;
+  background:-webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.02, rgb(123,192,67)),
+    color-stop(0.51, rgb(139,198,66)),
+    color-stop(0.87, rgb(158,217,41))
+    );
+  background: -moz-linear-gradient(
+    center bottom,
+    rgb(123,192,67) 2%,
+    rgb(139,198,66) 51%,
+    rgb(158,217,41) 87%
+    );
+  -webkit-border-top-left-radius:5px;
+  -webkit-border-top-right-radius:5px;
+  -moz-border-radius:5px 5px 5px 5px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+}
+.table1 tbody th{
+  color:#fff;
+  text-shadow:1px 1px 1px #568F23;
+  background-color:#9DD929;
+  border:1px solid #93CE37;
+  border-right:3px solid #9ED929;
+  padding:0px 10px;
+  background:-webkit-gradient(
+    linear,
+    left bottom,
+    right top,
+    color-stop(0.02, rgb(158,217,41)),
+    color-stop(0.51, rgb(139,198,66)),
+    color-stop(0.87, rgb(123,192,67))
+    );
+  background: -moz-linear-gradient(
+    left bottom,
+    rgb(158,217,41) 2%,
+    rgb(139,198,66) 51%,
+    rgb(123,192,67) 87%
+    );
+  -moz-border-radius:5px 0px 0px 5px;
+  -webkit-border-top-left-radius:5px;
+  -webkit-border-bottom-left-radius:5px;
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+}
+.table1 tfoot td{
+  color: #9CD009;
+  font-size:32px;
+  text-align:center;
+  padding:10px 0px;
+  text-shadow:1px 1px 1px #444;
+}
+.table1 tfoot th{
+color:#666;
+}
+.table1 tbody td{
+  width: 100;
+  padding:10px;
+  text-align:center;
+  background-color:#DEF3CA;
+  border: 2px solid #E7EFE0;
+  -moz-border-radius:2px;
+  -webkit-border-radius:2px;
+  border-radius:2px;
+  color:#666;
+  text-shadow:1px 1px 1px #fff;
+}
+/* estilo da tabela da pagina de menu de salas */
+
+/* botoes e propiedades da pagina 2 */
+.div_espaço2
+{
+  height:40;
+}
+.div_espaço
+{
+  height:150;
+}
+.div_bt_p2
+{
+  width:180;
+  position:absolute;
+  bottom:+100px;
+}
+/* botoes e propiedades da pagina 2 */
+
+/* apenas um teste
+.div_bt_lateral
+{
+  background-color: #0AA000;
+}
+
+.div_bt_lateral input
+{
+  background-color: #000000;
+  color: #FFFFFF;
+  background: none;
+}
+
+.div_bt_lateral a
+{
+  background-color: #000000;
+  color: #FFFFFF;
+  background: none;
+}
+
+.div_bt_lateral input:hover
+{
+background-color: #FF5566;
+color: #121212;
+} */
+
+/* botoes e propiedades da pagina de menu das salas*/
+
+/* Css da garagem */
+#Pagina3 input{
+
+  height: 30px;
+  color:#fff;
+  width: 180px;
+  text-shadow:1px 1px 1px #568F23;
+  border:1px solid #93CE37;
+  border-bottom:3px solid #9ED929;
+  background-color:#9DD929;
+  background:-webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.02, rgb(123,192,67)),
+    color-stop(0.51, rgb(139,198,66)),
+    color-stop(0.87, rgb(158,217,41))
+    );
+  background: -moz-linear-gradient(
+    center bottom,
+    rgb(123,192,67) 2%,
+    rgb(139,198,66) 51%,
+    rgb(158,217,41) 87%
+    );
+  -webkit-border-top-left-radius:5px;
+  -webkit-border-top-right-radius:5px;
+  -moz-border-radius:5px 5px 5px 5px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  margin: 10px;
+}
+
+#Pagina3 input:hover{
+  -webkit-box-shadow: inset 0 1px 10px 1px white;
+  color: white;
+}
+
+#Pagina3 input:active{
+  background-color: red;
+  color: white;
+}
+/* Css da garagem */
+#voltarmenu
+{
+position: absolute;
+right:100px;
+bottom:+50px;
+  
+}
+#escolhePrancha{
+position: absolute;
+left:100px;
+bottom:-15px;
+}
+

@@ -1,0 +1,44 @@
+**********************************************
+* MANUAL DE INSTRUÇÕES:
+*	JSERVIDOR ROLEMANIA SALA-3
+*
+* AUTOR:
+*	FERNANDO MINAMISSAWA FERNANDES LOPES
+* CONTATO:
+*	fernando.mfernandes@hotmail.com
+*	fm.fernandeslopes@gmail.com
+*********************************************
+
+Para executar o servidor no GNU/Linux
+va ate um terminal "Shell":
+	Servidor
+		va até o diretorio do arquivo Server.jar
+		entre no terminal
+			sudo java -jar Server.jar
+		
+		"O servidor esta rodando,  quando um cliente se 
+		 conectar o servidor ira imprimir"
+	
+	Cliente
+		mova o arquivo in.html incluso para a pasta web
+		ex: 
+			mv newchat.html var/www/
+		
+	TESTADO APENAS COM FIREFOX
+		com o arquivo na pasta www/ , abra um navegador 
+		entre com o endereco localhost/in.html	
+	
+Se deu certo
+	abra mais um navegador no newchat.html, copie as seguintes Strings
+em formato Json
+
+para o servidor retornar uma string json com os dados do servidor :
+{"user":{"id":10},"novaSala":false,"entraSala":0,"saiSala":false ,"vence":false
+
+Para o criar uma sala no servidor "Observe o que o servidor retorna"
+{"user":{"id":10},"novaSala":true,"entraSala":0,"saiSala":false ,"vence":false}
+
+Para um usuario participar da sala criada
+{"user":{"id":200},"novaSala":false,"entraSala":10,"saiSala":false ,"vence":false}
+
+
