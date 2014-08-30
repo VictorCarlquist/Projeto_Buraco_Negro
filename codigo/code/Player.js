@@ -44,8 +44,16 @@ Player.prototype.setLinkOrb	= function(o)
 Player.prototype.orbChange = function (orb,angle)
 {
 	var dist = distance(orb.Obj.getPosition(),this.SpaceShip.Obj.getPosition()); 
-	if(dist > this.SpaceShip.Fuel  || this.OrbitChanging != 0)
-		return false;	
+	// Verifica se o combustivel é suficiente para realizar o salto
+	// A distancia e o combustivel são proporcionais, ou seja se o combustivel ter o numero 80
+	// então significa que a nave apenas poderar realizar o salto quanto um planeta estiver 
+	// no máximo 80 unidades de distância
+	//if(dist > this.SpaceShip.Fuel  || this.OrbitChanging != 0)
+		//return false;
+	
+	if(this.OrbitChanging != 0)
+		return false;
+
 	if(!angle)
 		angle = 0.1;
 	
@@ -73,7 +81,6 @@ Player.prototype.orbChange = function (orb,angle)
 	angle -= Math.PI/2;
 	var oldTime = 0;
 
-	v = 0;
 	this.thread = setInterval(function() {
 
 			var p = orb.Obj.getPosition();

@@ -1,11 +1,3 @@
-/*var socket = new WebSocket("");
-socket.onopen = function(){
- var Estado = document.getElementById("estado").style.color ="green";
-}
-socket.onclose = function(){
- var Estado = document.getElementById("estado").style.color ="red";
-}*/
-
 function pagina_menu()
 {  
     if(NOME != "")

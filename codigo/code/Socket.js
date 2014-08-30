@@ -1,6 +1,21 @@
 /*
 ##################################SOCKET##############################################
 */
+var BUFFER = 0;
+var RECEBIDO = 0;
+var DADOS_DAS_SALAS; //Quem são os participantes
+var ID_DA_SALA;     
+var NOME = "";
+var meuId = "";
+
+var socket = new WebSocket("ws://localhost:8003");
+socket.onopen = function(){
+	var Estado = document.getElementById("estado").style.color ="green";
+}
+socket.onclose = function(){
+	var Estado = document.getElementById("estado").style.color ="red";
+}
+
 function envia()													
 {
 	var texto = document.getElementById("msg").value; 			
@@ -9,10 +24,9 @@ function envia()
 }
 function criaSalaMenor()
 {
-	var texto = "NOVA_SALA"
+	var texto = "NOVA_SALA";
 	socket.send(texto);
 	document.getElementById("Retorno").innerHTML = "";
-
 }
 
 function getServerInfo()
